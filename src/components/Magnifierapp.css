@@ -1,0 +1,42 @@
+/* Flashlight.css */
+.flashlight-container {
+    position: relative;
+    width: 100%;
+    height: 100%;
+    background: black;
+    overflow: hidden;
+    --x: -150px;
+    --y: -150px;
+}
+
+.flashlight-container * {
+    pointer-events: none; /* 禁止子元素响应鼠标事件 */
+}
+
+.flashlight-circle {
+    position: relative;
+    width: 100px;
+    height: 50px;
+    border-radius: 50%;
+    background: radial-gradient(circle, rgba(255, 255, 255, 0.8) 0%, rgba(255, 255, 255, 0.1) 60%, rgba(0, 0, 0, 0) 100%);
+    pointer-events: none; /* 禁止放大镜响应鼠标事件 */
+}
+.puzzle-content {
+    position: absolute;
+    width: 300px; /* 和光圈一样大 */
+    height: 300px; /* 和光圈一样大 */
+    border-radius: 50%; /* 圆形 */
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    font-size: 24px;
+    color: black;
+    opacity: 0; /* 默认隐藏 */
+    transition: opacity 0.3s ease-in-out;
+    pointer-events: none; /* 确保不阻碍鼠标事件 */
+}
+
+.puzzle-content.visible {
+    opacity: 1; /* 显示文本 */
+}
