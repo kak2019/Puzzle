@@ -14,7 +14,7 @@ const morseCodeDict = {
     ';': '-.-.-.',':': '---...',"'": '.----.','!': '-.-.--',
     '-': '-....-','_': '..--.-','"': '.-..-.','(': '-.--.',
     ')': '-.--.-','=': '-...-', '+': '.-.-.', '@': '.--.-.',
-    '&': '.-...'
+    '&': '.-...',
 };
 
 // 将文本转换为摩斯码的函数
@@ -26,7 +26,7 @@ function textToMorseCode(text) {
     // 遍历文本中的每个字符，并从字典中查找对应的摩斯码
     for (let char of text) {
         if (morseCodeDict[char]) {
-            morseCode += morseCodeDict[char] + ' ';
+            morseCode += morseCodeDict[char] + '/';
         } else {
             // 如果字符不在字典中，则添加一个错误标记
             morseCode += '<unknown> ';
@@ -46,7 +46,7 @@ const reverseMorseCodeDict = Object.fromEntries(
 // 将摩斯码转换为文本的函数
 function morseCodeToText(morseCode) {
     // 分割摩斯码字符串成单独的摩斯码单元
-    const codes = morseCode.split(' ');
+    const codes = morseCode.split('/');
     let text = "";
 
     // 遍历摩斯码单元并从反向字典中查找对应的字符

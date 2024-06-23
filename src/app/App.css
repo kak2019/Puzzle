@@ -11,3 +11,55 @@ body, html {
     align-items: center;
     justify-content: center;
 }
+
+pre {
+    font-family: 'Courier New', Courier, monospace; /* 使用等宽字体 */
+    white-space: pre-wrap; /* 保持空格不被折叠 */
+    word-wrap: break-word; /* 长单词或 URL 地址自动换行 */
+    font-size: 12px; /* 根据需要调整字体大小 */
+    line-height: normal; /* 调整行高保持文本对齐 */
+}
+/*文字呼吸感*/
+/* App.css */
+.breathing-text {
+    animation: breathe 5s infinite ease-in-out;
+    color :red;
+}
+
+@keyframes breathe {
+    0%, 100% {
+        font-size: 1rem;  /* 初始和最终字体大小 */
+    }
+    50% {
+        font-size: 4rem;  /* “呼吸”最大时的字体大小 */
+    }
+}
+/*文字的若隐若现*/
+.fading-text {
+    animation: fade 5s infinite ease-in-out;
+}
+
+@keyframes fade {
+    0%, 100% {
+        opacity: 0.1; /* 最不可见状态 */
+    }
+    50% {
+        opacity: 1; /* 完全可见状态 */
+    }
+}
+
+/*结合*/
+.combined-text-animation {
+    animation: combinedAnimation 5s infinite ease-in-out;
+}
+
+@keyframes combinedAnimation {
+    0%, 100% {
+        font-size: 1rem; /* 初始和结束时的字体大小 */
+        opacity: 0.1;    /* 最不可见 */
+    }
+    50% {
+        font-size: 3rem; /* “呼吸”最大时的字体大小 */
+        opacity: 1;        /* 完全可见 */
+    }
+}
