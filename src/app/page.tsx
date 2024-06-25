@@ -36,6 +36,7 @@ function App() {
             case 'flynt':
             case '高翔宇':
                 setsenense(`I will kill ${name}`);
+                break;
             default:
                 setsenense("What's this?")
         }
@@ -43,7 +44,7 @@ function App() {
 
     return (
         <>
-            {/*<p className={"breathing-text"}> Puzzle - Save me </p>*/}
+            <p className={"breathing-text"}> Puzzle - Save me </p>
             <br/>
             {displayV && <>
                 <p>{textToMorseCode('Please enter your name')}</p>
