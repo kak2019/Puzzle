@@ -10,6 +10,7 @@ body, html {
     display: flex;
     align-items: center;
     justify-content: center;
+    flex-direction: column; /* 添加这一行以确保内容垂直排列 */
 }
 
 pre {
@@ -23,7 +24,7 @@ pre {
 /* App.css */
 .breathing-text {
     animation: breathe 5s infinite ease-in-out;
-    color :red;
+    color : #f0f6cc;
 }
 
 @keyframes breathe {

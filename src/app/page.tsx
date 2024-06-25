@@ -1,57 +1,79 @@
 "use client";
-
-import React from 'react';
+import React, {useState} from 'react';
 import "./App.css";
 import Link from "next/link";
+import DragToReveal from '../components/DragToReveal';
+import {textToMorseCode} from "@/components/Mos";
 
 
 function App() {
+    const [name, setName] = useState('');
+    const [sentense, setsenense] = useState('');
+    const [displayV, setdisplayV] = useState(true);
+    const [displayNext, setdisplayNext] = useState(false);
 
+   const refreshPage = (e:any) => {
+        e.preventDefault(); // 阻止默认的链接行为
+        window.location.reload();
+    };
+    const handleInputChange = (event: { target: { value: React.SetStateAction<string>; }; }) => {
+        setName(event.target.value);
+    };
+    const handleSubmit = () => {
+        console.log(name);
+        // setsenense(`"Hello",${name}`);
+        setdisplayV(false)
+        switch (name) {
+            case "Arya":
+            case "张艳":
+            case "Zhang Arya":
+            case "arya":
+            case "大宝":
+                setsenense(`Hello,${name},My Sweet`);
+                setdisplayNext(true)
+                break;
+            case "Flynt":
+            case 'flynt':
+            case '高翔宇':
+                setsenense(`I will kill ${name}`);
+            default:
+                setsenense("What's this?")
+        }
+    }
 
     return (
         <>
-
-
-            Puzzle - Save me
-            <button onClick={() =>alert("wee")}></button>
+            {/*<p className={"breathing-text"}> Puzzle - Save me </p>*/}
+            <br/>
+            {displayV && <>
+                <p>{textToMorseCode('Please enter your name')}</p>
+                <input
+                    type="text"
+                    value={name}
+                    onChange={handleInputChange}
+                    // style={{display: displayV}}
+                />
+                <button onClick={handleSubmit}>Submit</button>
+            </>}
+            {!displayV &&
+                <><p>{sentense}</p>
+                    {displayNext && <Link href={"./sphinx"}>
+                        <br/>
+                        <button>Next Step</button>
+                    </Link>}
+                    {!displayNext && <p className={"fading-text"}><Link href={"#"} onClick={refreshPage}> Please think again.</Link></p>}
+                </>
+            }
+            {/*<button onClick={() => alert("wee")}></button>*/}
+            {/*    <div>*/}
+            {/*        <h1>Drag to reveal content</h1>*/}
+            {/*        <DragToReveal/>*/}
+            {/*    </div>*/}
+            {/*    <Link href="./sphinx">*/}
+            {/*  sds*/}
+            {/*</Link>*/}
         </>
     );
 }
 
 export default App;
-
-
-// import "../App.css"
-// import PuzzleIndex from "@/app/puzzleIndex";
-// import Link from 'next/link';
-// import App from "./page"
-//
-// export default function Home() {
-//
-//
-//     return (
-//         <main>
-//             <div className="z-10 w-full max-w-5xl items-center justify-between font-mono text-sm lg:flex">
-//                 {/*<p className="fixed left-0 top-0 flex w-full justify-center border-b border-gray-300 bg-gradient-to-b from-zinc-200 pb-6 pt-8 backdrop-blur-2xl dark:border-neutral-800 dark:bg-zinc-800/30 dark:from-inherit lg:static lg:w-auto  lg:rounded-xl lg:border lg:bg-gray-200 lg:p-4 lg:dark:bg-zinc-800/30">*/}
-//                 {/*  Get started by editing&nbsp;*/}
-//                 {/*  <code className="font-mono font-bold">src/app/page.tsx</code>*/}
-//                 {/*</p>*/}
-//
-//             </div>
-//             <li>
-//                 {/*<Link href="/">*/}
-//                 {/*    <PuzzleIndex/>*/}
-//                 {/*</Link>*/}
-//             </li>
-//             <li>
-//                 <Link href="/">
-// ni
-//                 </Link>
-//             </li>
-//             {/*<PuzzleIndex/>*/}
-//
-//             {/*</div>*/}
-//             {/*</OverlayEffect>*/}
-//         </main>
-//     );
-// }
